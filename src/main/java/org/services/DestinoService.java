@@ -25,7 +25,7 @@ public class DestinoService {
         if (id <= 0) {
             return null;
         }
-        return dao.obtenerPorId(id).orElse(null); // ✅ CORREGIDO
+        return dao.obtenerPorId(id).orElse(null);
     }
 
     public Destino crear(Destino destino) throws SQLException {
