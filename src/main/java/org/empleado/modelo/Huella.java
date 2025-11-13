@@ -7,7 +7,6 @@ public class Huella {
     private int datos_huella;
     private int fecha_registro;
     private char estado;
-    private int id_usuario;
 
     public int getId_huella() {
         return id_huella;
