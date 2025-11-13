@@ -19,7 +19,7 @@ public class Reparto {
     private Integer idDestino;
     private Integer idMetodoPago;
 
-    // Getters y setters existentes...
+
 
     public int getIdReparto() {
         return idReparto;

@@ -12,5 +12,6 @@ public class AsistenciaRutas {
         app.post("/asistencias", controlador::crear);
         app.put("/asistencias/{id}", controlador::actualizar);
         app.delete("/asistencias/{id}", controlador::eliminar);
+        app.get("/asistencias/{id}", controlador::obtenerPorId);
     }
 }

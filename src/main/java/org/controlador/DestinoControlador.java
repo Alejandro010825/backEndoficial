@@ -30,6 +30,11 @@ public class DestinoControlador {
             ctx.status(500).result("Error al listar destinos: " + e.getMessage());
         }
     }
+    public void obtenerPorId(Context ctx) {
+        int id = Integer.parseInt(ctx.pathParam("id"));
+        dao.obtenerPorId(id)
+                .ifPresentOrElse(ctx::json, () -> ctx.status(404).result("Configuración no encontrada"));
+    }
 
     public void crear(Context ctx) {
         try {

@@ -15,6 +15,8 @@ public class AsistenciaControlador {
         this.dao = new AsistenciaDAO();
     }
 
+
+
     public void listar(Context ctx) {
         try {
             List<Asistencia> lista = dao.listar();
@@ -28,6 +30,11 @@ public class AsistenciaControlador {
         } catch (SQLException e) {
             ctx.status(500).result("Error al listar asistencias: " + e.getMessage());
         }
+    }
+    public void obtenerPorId(Context ctx) {
+        int id = Integer.parseInt(ctx.pathParam("id"));
+        dao.obtenerPorId(id)
+                .ifPresentOrElse(ctx::json, () -> ctx.status(404).result("Empleado no encontrado"));
     }
 
     public void crear(Context ctx) {
