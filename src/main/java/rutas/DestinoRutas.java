@@ -12,5 +12,6 @@ public class DestinoRutas {
         app.post("/destinos", destinoControlador::crear);
         app.put("/destinos/{id}", destinoControlador::actualizar);
         app.delete("/destinos/{id}", destinoControlador::eliminar);
+        app.get("/destinos/{id}", destinoControlador::obtenerPorId);
     }
 }

@@ -6,6 +6,7 @@ import org.empleado.modelo.Asistencia;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class AsistenciaDAO {
 
@@ -31,6 +32,34 @@ public class AsistenciaDAO {
         }
         return lista;
     }
+    public Optional<Asistencia> obtenerPorId(int id) {
+        String sql = "SELECT * FROM asistencia WHERE id_asistencia = ?";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                Asistencia asistencia = new Asistencia();
+                asistencia.setId_asistencia(rs.getInt("id_asistencia"));
+                asistencia.setId_repartidor(rs.getInt("id_repartidor"));
+                asistencia.setFecha(rs.getDate("fecha"));
+                asistencia.setHora_entrada(rs.getTime("hora_entrada"));
+                asistencia.setHora_salida(rs.getTime("hora_salida"));
+                asistencia.setEstado(rs.getString("estado"));
+                asistencia.setObservacion(rs.getString("observacion"));
+                return Optional.of(asistencia);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return Optional.empty();
+    }
+
 
     public Asistencia crear(Asistencia a) throws SQLException {
         String sql = "INSERT INTO asistencia (id_repartidor, fecha, hora_entrada, hora_salida, estado, justificacion) VALUES (?, ?, ?, ?, ?, ?)";

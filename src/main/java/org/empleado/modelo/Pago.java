@@ -96,4 +96,3 @@ public class Pago {
         this.totalNeto = totalNeto;
     }
 }
-

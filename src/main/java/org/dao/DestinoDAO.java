@@ -6,6 +6,7 @@ import org.empleado.modelo.Destino;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class DestinoDAO {
 
@@ -25,6 +26,30 @@ public class DestinoDAO {
         }
         return lista;
     }
+    public Optional<Destino> obtenerPorId(int id) {
+        String sql = "SELECT * FROM destino WHERE id_destino = ?";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                Destino destino = new Destino();
+                destino.setIdDestino(rs.getInt("id_destino"));
+                destino.setLugar(rs.getString("lugar"));
+                destino.setDireccion(rs.getString("direccion"));
+                return Optional.of(destino);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return Optional.empty();
+    }
+
 
     public Destino crear(Destino d) throws SQLException {
         String sql = "INSERT INTO destino (lugar, direccion) VALUES (?, ?)";

@@ -8,10 +8,10 @@ public class Empleado {
     private String contraseña;
     private String rol;
 
-    // Constructor vacío
+
     public Empleado() {}
 
-    // Constructor completo
+
     public Empleado(int idEmpleado, String nombre, String apellido, String usuarioLogin, String contraseña, String rol) {
         this.idEmpleado = idEmpleado;
         this.nombre = nombre;
