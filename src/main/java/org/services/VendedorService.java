@@ -25,7 +25,7 @@ public class VendedorService {
         if (id <= 0) {
             return null;
         }
-        return dao.obtenerPorId(id).get();
+        return dao.obtenerPorId(id).orElse(null); // ✅ CORREGIDO
     }
 
     public Vendedor crear(Vendedor vendedor) throws SQLException {

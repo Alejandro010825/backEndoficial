@@ -25,7 +25,7 @@ public class EmpleadoService {
         if (id <= 0) {
             return null;
         }
-        return dao.obtenerPorId(id).get();
+        return dao.obtenerPorId(id).orElse(null);
     }
 
     public Empleado crear(Empleado empleado) throws SQLException {

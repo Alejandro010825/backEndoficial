@@ -1,24 +1,27 @@
 package org.controlador;
 
 import io.javalin.http.Context;
-import org.dao.DestinoDAO;
 import org.empleado.modelo.Destino;
+import org.services.DestinoService;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public class DestinoControlador {
 
-    private final DestinoDAO dao;
+    private final DestinoService service;
 
     public DestinoControlador() {
-        this.dao = new DestinoDAO();
+        this.service = new DestinoService();
     }
 
+    public DestinoControlador(DestinoService service) {
+        this.service = service;
+    }
 
     public void listar(Context ctx) {
         try {
-            List<Destino> lista = dao.listar();
+            List<Destino> lista = service.listarTodas();
 
             if (lista == null || lista.isEmpty()) {
                 ctx.status(204).result("No hay destinos registrados");
@@ -30,10 +33,23 @@ public class DestinoControlador {
             ctx.status(500).result("Error al listar destinos: " + e.getMessage());
         }
     }
+
     public void obtenerPorId(Context ctx) {
-        int id = Integer.parseInt(ctx.pathParam("id"));
-        dao.obtenerPorId(id)
-                .ifPresentOrElse(ctx::json, () -> ctx.status(404).result("Configuración no encontrada"));
+        try {
+            int id = Integer.parseInt(ctx.pathParam("id"));
+            Destino destino = service.obtenerPorId(id);
+
+            if (destino != null) {
+                ctx.status(200).json(destino);
+            } else {
+                ctx.status(404).result("Destino no encontrado");
+            }
+
+        } catch (NumberFormatException ex) {
+            ctx.status(400).result("ID inválido, debe ser un número");
+        } catch (SQLException e) {
+            ctx.status(500).result("Error al obtener destino: " + e.getMessage());
+        }
     }
 
     public void crear(Context ctx) {
@@ -45,7 +61,7 @@ public class DestinoControlador {
                 return;
             }
 
-            Destino creado = dao.crear(nuevo);
+            Destino creado = service.crear(nuevo);
 
             if (creado != null) {
                 ctx.status(201).json(creado);
@@ -53,6 +69,8 @@ public class DestinoControlador {
                 ctx.status(500).result("No se pudo crear el destino");
             }
 
+        } catch (IllegalArgumentException ex) {
+            ctx.status(400).result("Validación fallida: " + ex.getMessage());
         } catch (SQLException e) {
             ctx.status(500).result("Error SQL al crear destino: " + e.getMessage());
         } catch (Exception ex) {
@@ -70,7 +88,7 @@ public class DestinoControlador {
                 return;
             }
 
-            boolean ok = dao.actualizar(id, body);
+            boolean ok = service.actualizar(id, body);
 
             if (ok) {
                 ctx.status(200).result("Destino actualizado correctamente");
@@ -80,6 +98,8 @@ public class DestinoControlador {
 
         } catch (NumberFormatException ex) {
             ctx.status(400).result("ID inválido, debe ser numérico");
+        } catch (IllegalArgumentException ex) {
+            ctx.status(400).result("Validación fallida: " + ex.getMessage());
         } catch (SQLException e) {
             ctx.status(500).result("Error SQL al actualizar destino: " + e.getMessage());
         }
@@ -88,7 +108,7 @@ public class DestinoControlador {
     public void eliminar(Context ctx) {
         try {
             int id = Integer.parseInt(ctx.pathParam("id"));
-            boolean ok = dao.eliminar(id);
+            boolean ok = service.eliminar(id);
 
             if (ok) {
                 ctx.status(200).result("Destino eliminado correctamente");

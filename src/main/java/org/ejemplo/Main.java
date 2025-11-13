@@ -1,17 +1,8 @@
 package org.ejemplo;
 
 import io.javalin.Javalin;
-import io.javalin.plugin.bundled.CorsPluginConfig;
 
-import org.controlador.EmpleadoControlador;
-import org.controlador.VendedorControlador;
-import org.controlador.RepartidorControlador;
-import org.controlador.DestinoControlador;
-import org.controlador.RepartoControlador;
-import org.controlador.PagoControlador;
-import org.controlador.MetodoPagoControlador;
-import org.controlador.AsistenciaControlador;
-import rutas.*;
+import org.rutas.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -34,7 +25,6 @@ public class Main {
         RepartidorRutas.registrar(app);
         RepartoRutas.registrar(app);
         VendedorRutas.registrar(app);
-
         System.out.println("Servidor iniciado");
     }
 }

@@ -25,7 +25,7 @@ public class RepartoService {
         if (id <= 0) {
             return null;
         }
-        return dao.obtenerPorId(id).get();
+        return dao.obtenerPorId(id).orElse(null); // ✅ CORREGIDO
     }
 
     public Reparto crear(Reparto reparto) throws SQLException {

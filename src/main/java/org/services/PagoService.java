@@ -25,7 +25,14 @@ public class PagoService {
         if (id <= 0) {
             return null;
         }
-        return dao.obtenerPorId(id).get();
+        return dao.obtenerPorId(id).orElse(null); // ✅ CORREGIDO
+    }
+
+    public List<Pago> obtenerPorRepartidor(int idRepartidor) throws SQLException {
+        if (idRepartidor <= 0) {
+            return List.of();
+        }
+        return dao.obtenerPorRepartidor(idRepartidor);
     }
 
     public Pago crear(Pago pago) throws SQLException {

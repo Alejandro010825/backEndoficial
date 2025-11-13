@@ -25,7 +25,7 @@ public class ConfiguracionService {
         if (id <= 0) {
             return null;
         }
-        return dao.obtenerPorId(id).get();
+        return dao.obtenerPorId(id).orElse(null); // ✅ CORREGIDO
     }
 
     public Configuracion crear(Configuracion configuracion) throws SQLException {

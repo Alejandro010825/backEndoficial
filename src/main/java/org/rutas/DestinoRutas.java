@@ -1,4 +1,4 @@
-package rutas;
+package org.rutas;
 
 import io.javalin.Javalin;
 import org.controlador.DestinoControlador;
