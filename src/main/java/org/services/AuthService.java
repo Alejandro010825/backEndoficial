@@ -31,7 +31,6 @@ public class AuthService {
         if (empleadoOpt.isPresent()) {
             Empleado empleado = empleadoOpt.get();
 
-            // Comparar contraseñas en texto plano
             if (empleado.getContraseña().equals(contraseña)) {
                 return Optional.of(empleado);
             }
