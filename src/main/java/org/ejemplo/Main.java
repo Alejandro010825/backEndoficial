@@ -25,6 +25,7 @@ public class Main {
         RepartidorRutas.registrar(app);
         RepartoRutas.registrar(app);
         VendedorRutas.registrar(app);
+        AuthRutas.registrar(app);
         System.out.println("Servidor iniciado");
     }
 }

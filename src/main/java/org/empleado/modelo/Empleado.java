@@ -8,20 +8,6 @@ public class Empleado {
     private String contraseña;
     private String rol;
 
-
-    public Empleado() {}
-
-
-    public Empleado(int idEmpleado, String nombre, String apellido, String usuarioLogin, String contraseña, String rol) {
-        this.idEmpleado = idEmpleado;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.usuarioLogin = usuarioLogin;
-        this.contraseña = contraseña;
-        this.rol = rol;
-    }
-
-    // Getters y Setters
     public int getIdEmpleado() {
         return idEmpleado;
     }
@@ -69,6 +55,4 @@ public class Empleado {
     public void setRol(String rol) {
         this.rol = rol;
     }
-
-
 }

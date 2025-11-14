@@ -161,4 +161,26 @@ public class EmpleadoDAO {
             lista.forEach(e -> System.out.println("  - " + e));
         }
     }
+    public Optional<Empleado> obtenerPorUsuario(String usuario_login) throws SQLException {
+        String sql = "SELECT * FROM empleado WHERE usuario_login = ?";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, usuario_login);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                Empleado empleado = new Empleado();
+                empleado.setIdEmpleado(rs.getInt("id_empleado"));
+                empleado.setNombre(rs.getString("nombre"));
+                empleado.setApellido(rs.getString("apellido"));
+                empleado.setUsuarioLogin(rs.getString("usuario_login"));
+                empleado.setContraseña(rs.getString("contraseña"));
+                empleado.setRol(rs.getString("rol"));
+                return Optional.of(empleado);
+            }
+        }
+        return Optional.empty();
+    }
 }
