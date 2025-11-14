@@ -55,14 +55,13 @@ public class ConfiguracionDAO {
     }
 
     public Configuracion crear(Configuracion config) {
-        String sql = "INSERT INTO configuracion (sueldo_base, tarifa_viaje, costo_falta) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO configuracion (tarifa_viaje, costo_falta) VALUES (?, ?)";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
-            stmt.setFloat(1, config.getSueldo_base());
-            stmt.setFloat(2, config.getTarifa_viaje());
-            stmt.setFloat(3, config.getCosto_falta());
+            stmt.setFloat(1, config.getTarifa_viaje());
+            stmt.setFloat(2, config.getCosto_falta());
 
             stmt.executeUpdate();
 
@@ -87,10 +86,9 @@ public class ConfiguracionDAO {
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setFloat(1, config.getSueldo_base());
-            stmt.setFloat(2, config.getTarifa_viaje());
-            stmt.setFloat(3, config.getCosto_falta());
-            stmt.setInt(4, id);
+            stmt.setFloat(1, config.getTarifa_viaje());
+            stmt.setFloat(2, config.getCosto_falta());
+            stmt.setInt(3, id);
 
             int rowsAffected = stmt.executeUpdate();
 
@@ -132,7 +130,6 @@ public class ConfiguracionDAO {
     private Configuracion mapearConfiguracion(ResultSet rs) throws SQLException {
         Configuracion config = new Configuracion();
         config.setId_config(rs.getInt("id"));
-        config.setSueldo_base(rs.getFloat("sueldo_base"));
         config.setTarifa_viaje(rs.getFloat("tarifa_viaje"));
         config.setCosto_falta(rs.getFloat("costo_falta"));
         return config;

@@ -2,7 +2,6 @@ package org.empleado.modelo;
 
 public class Configuracion {
     private int id_config;
-    private float sueldo_base;
     private float tarifa_viaje;
     private float costo_falta;
 
@@ -12,14 +11,6 @@ public class Configuracion {
 
     public void setId_config(int id_config) {
         this.id_config = id_config;
-    }
-
-    public float getSueldo_base() {
-        return sueldo_base;
-    }
-
-    public void setSueldo_base(float sueldo_base) {
-        this.sueldo_base = sueldo_base;
     }
 
     public float getTarifa_viaje() {
