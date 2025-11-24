@@ -1,7 +1,7 @@
 package org.ejemplo;
 
 import io.javalin.Javalin;
-
+import org.rutas.RepartoGraficaRutas;
 import org.rutas.*;
 
 public class Main {
@@ -24,6 +24,7 @@ public class Main {
         PagoRutas.registrar(app);
         RepartidorRutas.registrar(app);
         RepartoRutas.registrar(app);
+        RepartoGraficaRutas.registrar(app);
         VendedorRutas.registrar(app);
         AuthRutas.registrar(app);
         System.out.println("Servidor iniciado");

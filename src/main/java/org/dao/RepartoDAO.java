@@ -7,6 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import org.empleado.modelo.RepartoGrafica;
 
 public class RepartoDAO {
 
@@ -218,5 +219,64 @@ public class RepartoDAO {
         if (!rs.wasNull()) reparto.setIdMetodoPago(idMetodoPago);
 
         return reparto;
+    }
+
+    public List<RepartoGrafica> obtenerRepartosPorFecha(int idRepartidor, Date fechaInicio, Date fechaFin) throws SQLException {
+        List<RepartoGrafica> datos = new ArrayList<>();
+        String sql = "SELECT fecha_creacion, COUNT(*) as cantidad " +
+                "FROM reparto " +
+                "WHERE id_repartidor = ? " +
+                "AND fecha_creacion BETWEEN ? AND ? " +
+                "GROUP BY fecha_creacion " +
+                "ORDER BY fecha_creacion ASC";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, idRepartidor);
+            ps.setDate(2, fechaInicio);
+            ps.setDate(3, fechaFin);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                RepartoGrafica dato = new RepartoGrafica();
+                dato.setFecha(rs.getDate("fecha_creacion"));
+                dato.setCantidadRepartos(rs.getInt("cantidad"));
+                dato.setIdRepartidor(idRepartidor);
+                datos.add(dato);
+            }
+
+            System.out.println(" Datos para gráfica obtenidos: " + datos.size());
+        }
+        return datos;
+    }
+
+    public List<RepartoGrafica> obtenerRepartosPorFecha(Date fechaInicio, Date fechaFin) throws SQLException {
+        List<RepartoGrafica> datos = new ArrayList<>();
+        String sql = "SELECT fecha_creacion, COUNT(*) as cantidad " +
+                "FROM reparto " +
+                "WHERE fecha_creacion BETWEEN ? AND ? " +
+                "GROUP BY fecha_creacion " +
+                "ORDER BY fecha_creacion ASC";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setDate(1, fechaInicio);
+            ps.setDate(2, fechaFin);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                RepartoGrafica dato = new RepartoGrafica();
+                dato.setFecha(rs.getDate("fecha_creacion"));
+                dato.setCantidadRepartos(rs.getInt("cantidad"));
+                datos.add(dato);
+            }
+
+            System.out.println(" Datos para gráfica obtenidos: " + datos.size());
+        }
+        return datos;
     }
 }

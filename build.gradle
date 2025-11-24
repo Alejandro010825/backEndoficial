@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 group = 'org.project'
@@ -35,6 +36,15 @@ java {
 
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
+}
+
+tasks{
+    shadowJar{
+        archiveBaseName.set("Autosoft")
+        manifest {
+            attributes["Main-class"] = "org.ejemplo.Main"
+        }
+    }
 }
 
 tasks.test {
