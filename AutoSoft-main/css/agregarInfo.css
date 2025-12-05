@@ -1,0 +1,685 @@
+/* ====================================================== 
+  ESTILOS ESPECÍFICOS PARA LA PÁGINA DE AGREGAR INFORMACIÓN
+  (VERSIÓN COMPLETA Y CORREGIDA)
+  ====================================================== */
+
+.content-wrapper {
+    position: relative;
+    z-index: 10;
+    padding: 40px;
+}
+
+/* --- Título principal --- */
+.main-title {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.title-underline {
+    width: 130px;
+    height: 4px;
+    background-color: #d90429;
+    margin-top: 8px;
+}
+
+/* --- Pestañas (Cards) --- */
+.tabs-container {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.tab-card {
+    width: 80px;
+    height: 80px;
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 32px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tab-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+    background-color: #d90429;
+    color: white;
+}
+
+.tab-card.active {
+    background-color: #d90429;
+    color: white;
+}
+
+/* --- Card contenedor del contenido --- */
+.card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    padding: 32px;
+}
+
+/* --- Contenido de pestañas --- */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+/* --- Botones generales --- */
+.btn-primary {
+    background-color: #d90429;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 24px;
+}
+
+.btn-primary:hover {
+    background-color: #b8032a;
+}
+
+.btn-primary i {
+    margin-right: 8px;
+}
+
+.btn-block {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+}
+
+/* --- Tabla --- */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table thead tr {
+    background-color: #f9fafb;
+}
+
+.data-table th {
+    text-align: left;
+    padding: 16px;
+    font-weight: 600;
+    color: #374151;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.data-table td {
+    padding: 16px;
+    border-bottom: 1px solid #e5e7eb;
+    color: #374151; 
+}
+
+.data-table tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+/* Badge de estado */
+.badge-active {
+    background-color: #d1fae5;
+    color: #065f46;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* --- Estado de huella --- */
+.fingerprint-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #059669;
+    font-size: 14px;
+    background: none;
+    border: none;
+    cursor: default;
+}
+
+.fingerprint-btn {
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.fingerprint-btn:hover {
+    color: #047857;
+}
+
+/* --- Botones de acción --- */
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 8px;
+    margin: 0 4px;
+    transition: color 0.3s;
+}
+
+.edit-btn {
+    color: #3b82f6;
+}
+
+.edit-btn:hover {
+    color: #2563eb;
+}
+
+.delete-btn {
+    color: #ef4444;
+}
+
+.delete-btn:hover {
+    color: #dc2626;
+}
+
+/* --- Header con acciones --- */
+.header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+/* --- Buscador --- */
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.search-box i {
+    position: absolute;
+    left: 12px;
+    color: #9ca3af;
+}
+
+.search-box input {
+    padding: 10px 10px 10px 40px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    width: 250px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search-box input:focus {
+    border-color: #d90429;
+}
+
+/* --- Listas --- */
+.destinations-list, .payment-methods-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.destination-item, .payment-method-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.destination-item:hover, .payment-method-item:hover {
+    background-color: #f9fafb;
+}
+
+.destination-info, .payment-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.destination-info i, .payment-info i {
+    font-size: 24px;
+    color: #d90429;
+}
+
+.destination-info h3, .payment-info h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.destination-info p {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.status-active {
+    font-size: 14px;
+    color: #059669;
+}
+
+.status-inactive {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.destination-actions, .payment-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* --- Toggle Switch --- */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #d1d5db;
+    transition: 0.3s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #10b981;
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+/* ======================================================
+  ESTILOS CRÍTICOS PARA MODALES DE AGREGAR (NUEVO DISEÑO)
+  ====================================================== */
+
+/* --- Modal base (Overlay) --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto; 
+    padding: 20px 0;
+}
+
+.modal.show {
+    display: flex;
+}
+
+/* --- Contenido del modal (el cuadro blanco) --- */
+.modal-content {
+    background: white;
+    border-radius: 12px;
+    padding: 0;
+    width: 90%;
+    max-width: 400px; /* Ancho profesional */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden; 
+    max-height: 90vh; 
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Encabezado del modal (NUEVO DISEÑO) --- */
+.modal-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid #e5e7eb;
+    background: #f9fafb; /* Fondo gris muy claro */
+    position: sticky; 
+    top: 0; 
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-header h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+    text-align: center;
+    flex-grow: 1;
+}
+
+/* --- Botón cerrar (La 'X') --- */
+.close-modal-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #9ca3af;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 15; 
+    overflow: hidden;
+    text-indent: -9999px; /* Oculta el texto si lo hubiera */
+}
+
+/* Fuerza la 'X' visualmente */
+.close-modal-btn::before {
+    content: '×'; 
+    font-family: Arial, sans-serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: #9ca3af;
+    text-indent: 0; 
+    line-height: 32px; 
+}
+
+.close-modal-btn:hover {
+    background: #f3f4f6;
+}
+
+.close-modal-btn:hover::before {
+    color: #374151;
+}
+
+/* --- Cuerpo del modal (Formulario) (NUEVO DISEÑO) --- */
+.modal-body {
+    padding: 24px; /* Padding unificado */
+    overflow-y: auto; 
+    flex-grow: 1;
+    background: #ffffff;
+}
+
+/* --- Formulario y Grupos --- */
+#generic-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+    margin-bottom: 24px; /* Espacio entre el último input y los botones */
+}
+
+.form-group label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #374151;
+    margin-bottom: 4px;
+}
+
+/* Inputs con fondo gris */
+.form-group input,
+.form-group select {
+    padding: 12px 14px;
+    border: 1px solid #e5e7eb; 
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    transition: border-color 0.2s, background-color 0.2s;
+    background: #f9fafb;
+    color: #1f2937;
+}
+
+.form-group input::placeholder {
+    color: #9ca3af;
+}
+
+/* Focus sutil */
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #d90429; 
+    background: #fff; 
+    box-shadow: none; /* Sin sombra */
+}
+
+/* --- Botones del formulario (Acciones) (NUEVO DISEÑO) --- */
+.form-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    width: 100%;
+    margin-top: 24px; /* Espacio entre los campos y los botones */
+    /* No necesita padding, ya que está DENTRO de modal-body */
+}
+
+/* Estilo para los botones principales y de guardar */
+.btn-save {
+    background: #d90429;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 12px; /* Esquinas redondeadas */
+    font-size: 15px;
+    font-weight: 700; /* Texto más grueso */
+    cursor: pointer;
+    transition: all 0.3s;
+    flex: 1; /* Ocupan el mismo espacio */
+}
+
+.btn-save:hover {
+    background: #b8032a;
+}
+
+/* Estilo para el botón de cancelar (sin "X") */
+.btn-cancel {
+    background: #e5e7eb; /* Fondo gris claro */
+    color: #374151; /* Texto gris oscuro */
+    border: none;
+    padding: 12px 30px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    flex: 1;
+    position: static; /* Aseguramos que no se posicione de forma extraña */
+    margin: 0; /* Reiniciar márgenes */
+}
+
+.btn-cancel:hover {
+    background: #d1d5db; /* Fondo ligeramente más oscuro al pasar el ratón */
+}
+
+/* --- Responsive para móviles --- */
+@media (max-width: 768px) {
+    .content-wrapper {
+        padding: 20px;
+    }
+    .tabs-container {
+        gap: 12px;
+        margin-bottom: 24px;
+    }
+    .tab-card {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+    }
+    .card {
+        padding: 24px;
+    }
+    .modal-content {
+        width: 95%;
+        max-width: 95%;
+        margin: 10px;
+    }
+    .modal-header {
+        padding: 20px 20px 12px;
+    }
+    .modal-body {
+        padding: 20px; 
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-actions {
+        flex-direction: column; /* Botones apilados en móvil */
+        gap: 8px;
+        margin-top: 20px; /* Ajustar el margen superior en móvil */
+    }
+    .btn-save,
+    .btn-cancel {
+        width: 100%;
+        flex: none; /* Desactiva el flex-grow en móvil */
+    }
+    .close-modal-btn {
+        top: 15px;
+        right: 15px;
+    }
+}
+
+/* --- Animación de entrada del modal --- */
+@keyframes modalEnter {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.modal.show .modal-content {
+    animation: modalEnter 0.3s ease-out;
+}
+
+/* --- Estilo de modal de confirmación/error (Para el modal de "Inválido") --- */
+#confirm-modal {
+    z-index: 2000;
+    background-color: transparent; /* No oscurece el modal de abajo */
+}
+
+#confirm-modal-content {
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 350px; 
+    padding: 24px; 
+    text-align: left; 
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+#confirm-modal-content h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+}
+
+#confirm-modal-content p {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0;
+}
+
+/* Botones dentro del modal de confirmación */
+#confirm-modal-content .btn-primary,
+#confirm-modal-content .btn-save,
+#confirm-modal-content .btn-danger,
+#confirm-modal-content .btn-secondary {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px; /* Esquinas redondeadas */
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 0; 
+    width: auto; 
+    align-self: flex-start;
+}
+
+#confirm-modal-content .btn-primary,
+#confirm-modal-content .btn-save {
+    background: #d90429;
+    color: white;
+}
+#confirm-modal-content .btn-primary:hover,
+#confirm-modal-content .btn-save:hover {
+     background-color: #b8032a;
+}
+
+#confirm-modal-content .confirm-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+#confirm-modal-content .btn-danger {
+     background-color: #ef4444;
+     color: white;
+}
+#confirm-modal-content .btn-danger:hover {
+     background-color: #dc2626;
+}
+
+#confirm-modal-content .btn-secondary {
+     background-color: #e5e7eb;
+     color: #374151;
+}
+#confirm-modal-content .btn-secondary:hover {
+     background-color: #d1d5db;
+}
